@@ -12,7 +12,11 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class StudentService implements  IStudentService{
-    private StudentRepository studentRepository;
+    private final StudentRepository studentRepository;
+
+    public StudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
 
     @Override
     public List<Student> getStudents() {
