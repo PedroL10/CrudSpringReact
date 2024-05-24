@@ -14,10 +14,6 @@ import java.util.List;
 public class StudentService implements  IStudentService{
     private final StudentRepository studentRepository;
 
-    public StudentService(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
-    }
-
     @Override
     public List<Student> getStudents() {
         return studentRepository.findAll();
@@ -54,6 +50,7 @@ public class StudentService implements  IStudentService{
     if(!studentRepository.existsById(id)) {
             throw new StudentNotFoundException("Sorry, student not found");
         }
+    studentRepository.deleteById(id);
     }
 
     private boolean studentAlreadyExists(String email) {

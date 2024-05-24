@@ -15,10 +15,6 @@ import java.util.List;
 public class StudentController {
     private final IStudentService studentService;
 
-    public StudentController(IStudentService studentService) {
-        this.studentService = studentService;
-    }
-
     @GetMapping
     public ResponseEntity<List<Student>> getStudents() {
         return new ResponseEntity<>(studentService.getStudents(), HttpStatus.FOUND);
